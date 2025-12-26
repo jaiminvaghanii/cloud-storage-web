@@ -42,7 +42,7 @@ export const HowItWorks = () => {
                         viewport={{ once: true }}
                         className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
                     >
-                        How CloudVault Works
+                        How Tenbox Works
                     </motion.h2>
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}

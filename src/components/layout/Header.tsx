@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { Cloud, Menu, X } from 'lucide-react';
@@ -24,20 +25,20 @@ export const Header = () => {
             transition={{ duration: 0.5 }}
         >
             <div className="container mx-auto px-4 flex items-center justify-between">
-                <div className="flex items-center gap-2 font-bold text-2xl tracking-tighter">
+                <Link to="/" className="flex items-center gap-2 font-bold text-2xl tracking-tighter">
                     <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg">
                         <Cloud className="w-6 h-6 text-white" />
                     </div>
                     <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                        CloudVault
+                        Tenbox
                     </span>
-                </div>
+                </Link>
 
                 <nav className="hidden md:flex items-center gap-8">
                     {['Features', 'How it Works', 'Pricing', 'Security'].map((item) => (
                         <a
                             key={item}
-                            href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                            href={`/#${item.toLowerCase().replace(/\s+/g, '-')}`}
                             className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
                         >
                             {item}

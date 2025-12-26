@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Cloud, Github, Twitter, Linkedin, Disc as Discord } from 'lucide-react';
 import { Button } from '../ui/Button';
 
@@ -12,10 +13,10 @@ export const Footer = () => {
                             <div className="p-2 bg-gradient-to-br from-primary to-secondary rounded-lg">
                                 <Cloud className="w-6 h-6 text-white" />
                             </div>
-                            <span className="text-white">CloudVault</span>
+                            <span className="text-white">Tenbox</span>
                         </div>
                         <p className="text-gray-400 mb-6 max-w-sm">
-                            The next generation of cloud storage. Secure, fast, and beautiful. Built for the modern web with an antigravity design philosophy.
+                            Experience storage that defies gravity. Tenbox combines zero-knowledge security with a beautiful, weightless interface designed to elevate your digital life.
                         </p>
                         <div className="flex gap-4">
                             {[Github, Twitter, Linkedin, Discord].map((Icon, i) => (
@@ -29,9 +30,13 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-bold text-white mb-6">Product</h4>
                         <ul className="space-y-4">
-                            {['Features', 'Pricing', 'Security', 'Roadmap', 'Changelog'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-gray-400 hover:text-primary transition-colors text-sm">{item}</a>
+                            {[
+                                { label: 'Features', path: '/#features' },
+                                { label: 'Pricing', path: '/#pricing' },
+                                { label: 'Security', path: '/#security' }
+                            ].map((item) => (
+                                <li key={item.path}>
+                                    <a href={item.path} className="text-gray-400 hover:text-primary transition-colors text-sm">{item.label}</a>
                                 </li>
                             ))}
                         </ul>
@@ -40,9 +45,14 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-bold text-white mb-6">Company</h4>
                         <ul className="space-y-4">
-                            {['About', 'Blog', 'Careers', 'Brand', 'Contact'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-gray-400 hover:text-primary transition-colors text-sm">{item}</a>
+                            {[
+                                { label: 'About', path: '/company/about' },
+                                { label: 'Blog', path: '/company/blog' },
+                                { label: 'Careers', path: '/company/careers' },
+                                { label: 'Contact', path: '/company/contact' }
+                            ].map((item) => (
+                                <li key={item.path}>
+                                    <Link to={item.path} className="text-gray-400 hover:text-primary transition-colors text-sm">{item.label}</Link>
                                 </li>
                             ))}
                         </ul>
@@ -51,9 +61,16 @@ export const Footer = () => {
                     <div>
                         <h4 className="font-bold text-white mb-6">Legal</h4>
                         <ul className="space-y-4">
-                            {['Privacy', 'Terms', 'Security', 'Cookies'].map((item) => (
-                                <li key={item}>
-                                    <a href="#" className="text-gray-400 hover:text-primary transition-colors text-sm">{item}</a>
+                            {[
+                                { label: 'Privacy', path: '/legal/privacy' },
+                                { label: 'Terms', path: '/legal/terms' },
+                                { label: 'DMCA', path: '/legal/dmca' },
+                                { label: 'Transparency', path: '/legal/transparency' }
+                            ].map((item) => (
+                                <li key={item.path}>
+                                    <Link to={item.path} className="text-gray-400 hover:text-primary transition-colors text-sm">
+                                        {item.label}
+                                    </Link>
                                 </li>
                             ))}
                         </ul>
@@ -61,7 +78,7 @@ export const Footer = () => {
                 </div>
 
                 <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-gray-500 text-sm">© 2024 CloudVault Inc. All rights reserved.</p>
+                    <p className="text-gray-500 text-sm">© 2024 Tenbox Inc. All rights reserved.</p>
 
                     <div className="flex items-center gap-2 bg-white/5 p-1 rounded-full pl-4">
                         <input

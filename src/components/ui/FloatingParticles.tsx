@@ -16,7 +16,7 @@ export const FloatingParticles = () => {
             {particles.map((particle) => (
                 <motion.div
                     key={particle.id}
-                    className="absolute rounded-full bg-cyan-400/30 blur-[1px]"
+                    className="absolute rounded-full bg-cyan-400 blur-[1px]"
                     style={{
                         width: particle.size,
                         height: particle.size,
@@ -26,7 +26,7 @@ export const FloatingParticles = () => {
                     animate={{
                         y: [0, -100, 0],
                         x: [0, Math.random() * 50 - 25, 0],
-                        opacity: [0, 0.8, 0],
+                        opacity: [0, 0.6, 0], // Increased max opacity
                         scale: [0, 1.5, 0],
                     }}
                     transition={{

@@ -12,7 +12,7 @@ const testimonials = [
     {
         name: "Marcus Rodriguez",
         role: "Startup Founder",
-        quote: "Security was our #1 concern. CloudVault's zero-knowledge architecture gave us the peace of mind we needed to switch from Drive.",
+        quote: "Security was our #1 concern. Tenbox's zero-knowledge architecture gave us the peace of mind we needed to switch from Drive.",
         rating: 5
     },
     {

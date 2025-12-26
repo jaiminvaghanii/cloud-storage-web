@@ -3,7 +3,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button } from '../ui/Button';
 import { AnimatedText } from '../ui/AnimatedText';
 import { FloatingParticles } from '../ui/FloatingParticles';
-import { Shield, HardDrive, Users } from 'lucide-react';
+import { Shield, HardDrive, Users, FileText, Folder, File } from 'lucide-react';
 
 export const Hero = () => {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -17,6 +17,7 @@ export const Hero = () => {
             <FloatingParticles />
 
             {/* Background Gradient Orbs */}
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 z-0" />
             <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[100px] animate-pulse-glow" />
             <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-secondary/20 rounded-full blur-[100px] animate-pulse-glow" />
 
@@ -35,21 +36,29 @@ export const Hero = () => {
                     </motion.div>
 
                     <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-                        <AnimatedText text="Your Data," />
+                        <AnimatedText text="Tenbox," />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-                            <AnimatedText text="Floating in the Cloud" delay={0.2} />
+                            <AnimatedText text="Defying Gravity" delay={0.2} />
                         </span>
                     </h1>
 
                     <p className="text-lg text-gray-400 max-w-lg">
-                        Experience the future of secure, decentralized storage with our antigravity-inspired platform. Fast, reliable, and beautiful.
+                        Break free from limits with the world's most advanced decentralized storage. Zero-knowledge encryption, lightning speeds, and a design that floats above the rest.
                     </p>
 
                     <div className="flex items-center gap-4 mt-4">
-                        <Button size="lg" className="shadow-[0_0_30px_rgba(14,165,233,0.3)]">
+                        <Button
+                            size="lg"
+                            className="shadow-[0_0_30px_rgba(14,165,233,0.3)]"
+                            onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
                             Start Free
                         </Button>
-                        <Button variant="secondary" size="lg">
+                        <Button
+                            variant="secondary"
+                            size="lg"
+                            onClick={() => document.getElementById('how-it-works')?.scrollIntoView({ behavior: 'smooth' })}
+                        >
                             Watch Demo
                         </Button>
                     </div>
@@ -102,12 +111,21 @@ export const Hero = () => {
                         </div>
 
                         <div className="space-y-4">
-                            {[1, 2, 3].map((_, i) => (
-                                <div key={i} className="h-16 rounded-xl bg-white/5 flex items-center px-4 gap-4 hover:bg-white/10 transition-colors cursor-pointer">
-                                    <div className="w-8 h-8 rounded-lg bg-indigo-500/20" />
+                            {[
+                                { name: 'Project_Alpha_Specs.pdf', size: '2.4 MB', color: 'bg-red-500', icon: FileText },
+                                { name: 'Marketing_Assets.zip', size: '156 MB', color: 'bg-yellow-500', icon: Folder },
+                                { name: 'Q4_Financials.xlsx', size: '4.8 MB', color: 'bg-green-500', icon: File }
+                            ].map((file, i) => (
+                                <div key={i} className="h-16 rounded-xl bg-white/5 flex items-center px-4 gap-4 hover:bg-white/10 transition-colors cursor-pointer group">
+                                    <div className={`w-10 h-10 rounded-lg ${file.color}/20 flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                                        <file.icon className={`w-5 h-5 ${file.color.replace('bg-', 'text-')}`} />
+                                    </div>
                                     <div className="flex-1">
-                                        <div className="h-2 w-24 bg-white/20 rounded mb-2" />
-                                        <div className="h-2 w-16 bg-white/10 rounded" />
+                                        <h4 className="text-sm font-medium text-gray-200 group-hover:text-white transition-colors">{file.name}</h4>
+                                        <p className="text-xs text-gray-500">{file.size}</p>
+                                    </div>
+                                    <div className="w-8 h-8 rounded-full hover:bg-white/10 flex items-center justify-center">
+                                        <div className="w-1 h-1 bg-gray-500 rounded-full box-content border-l-[3px] border-r-[3px] border-transparent" />
                                     </div>
                                 </div>
                             ))}
