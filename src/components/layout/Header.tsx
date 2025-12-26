@@ -5,10 +5,13 @@ import { Button } from '../ui/Button';
 import { Cloud, Menu, X } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
+import { AppDownloadModal } from '../ui/AppDownloadModal';
+
 export const Header = () => {
     const { scrollY } = useScroll();
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         setIsScrolled(latest > 50);
@@ -48,7 +51,7 @@ export const Header = () => {
 
                 <div className="hidden md:flex items-center gap-4">
                     <Button variant="ghost" size="sm">Sign In</Button>
-                    <Button size="sm">Get Started</Button>
+                    <Button size="sm" onClick={() => setIsDownloadModalOpen(true)}>Get App</Button>
                 </div>
 
                 {/* Mobile Menu Toggle */}
@@ -80,10 +83,12 @@ export const Header = () => {
                     ))}
                     <div className="flex flex-col gap-2 mt-4">
                         <Button variant="ghost" className="w-full justify-start">Sign In</Button>
-                        <Button className="w-full">Get Started</Button>
+                        <Button className="w-full" onClick={() => { setIsMobileMenuOpen(false); setIsDownloadModalOpen(true); }}>Get App</Button>
                     </div>
                 </motion.div>
             )}
+
+            <AppDownloadModal isOpen={isDownloadModalOpen} onClose={() => setIsDownloadModalOpen(false)} />
         </motion.header>
     );
 };
